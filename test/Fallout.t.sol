@@ -31,6 +31,12 @@ contract FalloutTest is Test {
 
         // Simulate exploit
         falloutInstance.Fal1out();
-        assertEq(falloutInstance.owner(), player);
+
+        // Submit level
+        bool levelSuccessFullyPassed = ethernaut.submitLevelInstance(
+            payable(levelAddress)
+        );
+        vm.stopPrank();
+        assert(levelSuccessFullyPassed);
     }
 }
